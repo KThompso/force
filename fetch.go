@@ -188,6 +188,11 @@ func runFetch(cmd *Command, args []string) {
 
 	force, _ := ActiveForce()
 
+	if len(args) == 0 {
+		cmd.printUsage()
+		return
+	}
+
 	if len(packageXml) == 0 && len(metadataTypes) == 0 {
 		ErrorAndExit("must specify object type and/or object name or package xml path")
 	}
